@@ -1,0 +1,19 @@
+
+.message-list {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 24px 0;
+}
+
+.message-list--empty {
+  flex: 1;
+  align-items: left;
+  justify-content: space-evenly;
+
+  color: #aca5bb;
+  text-align: center;
+}
