@@ -109,3 +109,57 @@ code {
   padding: 4px 8px;
   background: var(--code-bg);
 }
+
+
+/* NYRA - Default dark theme */
+:root {
+  --nyra-bg: #101015;
+  --nyra-sidebar-bg: #1a1821;
+  --nyra-card-bg: #282233;
+  --nyra-border: #34303c;
+  --nyra-text-primary: #f5f1fa;
+  --nyra-text-muted: #aaa4b3;
+  --nyra-accent: #c6acf2;
+}
+
+/* NYRA - Light theme */
+:root[data-theme="light"] {
+  --nyra-bg: #f8f6fa;
+  --nyra-sidebar-bg: #ffffff;
+  --nyra-card-bg: #f0eaf5;
+  --nyra-border: #e5ddea;
+  --nyra-text-primary: #241b2d;
+  --nyra-text-muted: #6d6276;
+  --nyra-accent: #7952a8;
+}
+
+
+/* NYRA - Accent colors */
+
+/* Pink */
+:root[data-accent="pink"] {
+  --nyra-accent: #f0a6d1;
+}
+
+/* Green */
+:root[data-accent="green"] {
+  --nyra-accent: #86efac;
+}
+
+/* Blue */
+:root[data-accent="blue"] {
+  --nyra-accent: #93c5fd;
+}
+
+/* Light theme variants */
+:root[data-theme="light"][data-accent="pink"] {
+  --nyra-accent: #a83275;
+}
+
+:root[data-theme="light"][data-accent="green"] {
+  --nyra-accent: #15803d;
+}
+
+:root[data-theme="light"][data-accent="blue"] {
+  --nyra-accent: #2563eb;
+}

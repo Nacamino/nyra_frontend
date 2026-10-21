@@ -1,11 +1,14 @@
 import { AppShell } from "./components/layout/AppShell";
 import { AppRoutes } from "./app/routes/AppRoutes";
+import { ThemeProvider } from "./context/ThemeContext";
 
 function App() {
   return (
-    <AppShell>
-      <AppRoutes />
-    </AppShell>
+    <ThemeProvider>
+      <AppShell>
+        <AppRoutes />
+      </AppShell>
+    </ThemeProvider>
   );
 }
 
