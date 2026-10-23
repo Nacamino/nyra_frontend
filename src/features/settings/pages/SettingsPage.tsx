@@ -1,7 +1,11 @@
 import { SettingRow } from "../components/SettingRow";
 import { ThemeSelector } from "../components/ThemeSelector";
 import { AccentColorSelector } from "../components/AccentColorSelector";
-import "../styles/SettingsPage.css";
+import { BackgroundSelector } from "../components/BackgroundSelector";
+import { ResetPreferencesButton } from "../components/ResetPreferencesButton";
+import { ModelStatus } from "../components/ModelStatus";
+
+import "../../../styles/SettingsPage.css";
 
 export function SettingsPage() {
     return (
@@ -24,14 +28,19 @@ export function SettingsPage() {
 
                 <SettingRow
                 label="Fondo"
-                options="Sólido / Degradado suave"
+                options={<BackgroundSelector />}
                 />
 
                 <SettingRow
                 label="Modelo preferido"
-                options="Local / Auto / Cloud"
+                options={<ModelStatus />}
                 />
             </div>
+    
+            <div className="settings-actions">
+            <ResetPreferencesButton />
+            </div>
+
         </section>
     );
 }

@@ -6,21 +6,28 @@ import {
     type ReactNode,
 } from "react";
 
+//Declaraciones de tipo para el tema, color de acento y modo de fondo
 export type Theme = "dark" | "light" | "system";
 export type AccentColor = "lavender" | "pink" | "green" | "blue";
+export type BackgroundMode = "solid" | "gradient";
 
+//Definicion de un tipo de objeto para el contexto del tema, que incluye el tema actual, color de acento y modo de fondo, junto con sus funciones de actualización
 type ThemeContextType = {
     theme: Theme;
     setTheme: (theme: Theme) => void;
     accent: AccentColor;
     setAccent: (accent: AccentColor) => void;
+    backgroundMode: BackgroundMode;
+    setBackgroundMode: (backgroundMode: BackgroundMode) => void;
 };
 
+//crea el contecto de react y define su tipo
 const ThemeContext = createContext<ThemeContextType | undefined>(
     undefined
 );
 
 export function ThemeProvider({ children }: { children: ReactNode }) {
+    //Estado para el tema, color de acento y modo de fondo, inicializado con valores guardados en localStorage o valores predeterminados
     const [theme, setTheme] = useState<Theme>(() => {
         const savedTheme = localStorage.getItem("nyra-theme");
 
@@ -50,17 +57,29 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         return "lavender";
     });
 
+    
+    const [backgroundMode, setBackgroundMode] = useState<BackgroundMode>(() => {
+        const savedBackground = localStorage.getItem("nyra-background");
+
+        if (savedBackground === "solid" || savedBackground === "gradient") {
+            return savedBackground;
+        }
+
+        return "solid";
+    });
+
+
     useEffect(() => {
         const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
 
         const applyTheme = () => {
-        const resolvedTheme =
-            theme === "system"
-            ? mediaQuery.matches ? "dark" : "light"
-            : theme;
+            const resolvedTheme =
+                theme === "system"
+                ? mediaQuery.matches ? "dark" : "light"
+                : theme;
 
-        document.documentElement.dataset.theme = resolvedTheme;
-        document.documentElement.style.colorScheme = resolvedTheme;
+            document.documentElement.dataset.theme = resolvedTheme;
+            document.documentElement.style.colorScheme = resolvedTheme;
         };
 
         applyTheme();
@@ -81,8 +100,13 @@ export function ThemeProvider({ children }: { children: ReactNode }) {
         document.documentElement.dataset.accent = accent;
     }, [accent]);
 
+    useEffect(() => {
+        localStorage.setItem("nyra-background", backgroundMode);
+        document.documentElement.dataset.background = backgroundMode;
+    }, [backgroundMode]);
+
     return (
-        <ThemeContext.Provider value={{ theme, setTheme, accent, setAccent }}>
+        <ThemeContext.Provider value={{ theme, setTheme, accent, setAccent, backgroundMode, setBackgroundMode }}>
             {children}
         </ThemeContext.Provider>
     );
