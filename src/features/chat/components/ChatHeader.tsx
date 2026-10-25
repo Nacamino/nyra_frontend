@@ -1,5 +1,5 @@
 import "../../../styles/ChatHeader.css";
-import { BrainCircuit, Cpu, ChevronDown } from "lucide-react";
+import { BrainCircuit, Cpu, ChevronDown, Plus } from "lucide-react";
 
 export function ChatHeader() {
   return (
@@ -22,6 +22,7 @@ export function ChatHeader() {
         <span>Modelo local</span>
         <ChevronDown size={16} />
       </div>
+
     </header>
   );
 }

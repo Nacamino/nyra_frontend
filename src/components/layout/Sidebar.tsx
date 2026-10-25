@@ -7,16 +7,39 @@ import {
   Settings,
   Monitor,
 } from "lucide-react";
+import { useLocation, useNavigate } from "react-router-dom";
+
+import { ConversationList } from "../../features/chat/components/ConversationList";
+import { useChat } from "../../features/chat/hooks/useChat";
 
 
 const navigationItems = [
   { id: "chat", label: "Chat", icon: MessageSquare, path: "/" },
   { id: "tools", label: "Herramientas", icon: Wrench, path: "/tools" },
   { id: "traces", label: "Trazas", icon: Activity, path: "/traces" },
-  { id: "settings", label: "Ajustes", icon: Settings, path: "/settings" },
 ];
 
 export function Sidebar() {
+const {
+  conversations,
+  activeConversationId,
+  selectConversation,
+  createConversation,
+} = useChat();
+
+  const navigate = useNavigate();
+  const location = useLocation();
+
+  const isChatPage = location.pathname === "/";
+
+  const handleSelectConversation = (id: string) => {
+    selectConversation(id);
+    navigate("/");
+  };
+  const handleNewChat = () => {
+  createConversation();
+  navigate("/");
+  };
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">
@@ -47,6 +70,26 @@ export function Sidebar() {
           );
         })}
       </nav>
+      {isChatPage && (
+      <ConversationList
+        conversations={conversations}
+        activeConversationId={activeConversationId ?? ""}
+        onSelectConversation={handleSelectConversation}
+        onNewChat={handleNewChat}
+      />
+    )}
+
+    <div className="sidebar-settings">
+      <NavLink
+        to="/settings"
+        className={({ isActive }) =>
+          `sidebar-link ${isActive ? "sidebar-link--active" : ""}`
+        }
+      >
+        <Settings size={19} strokeWidth={1.8} />
+        <span>Ajustes</span>
+      </NavLink>
+    </div>
 
       <div className="sidebar-footer">
         <Monitor size={16} aria-hidden="true" />

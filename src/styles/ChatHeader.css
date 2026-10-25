@@ -51,7 +51,35 @@
   border: 1px solid #443b52;
   border-radius: 10px;
 
-  background-color: #292532;
+  background-color: #30273d;
   color: #e4dbed;
   font-size: 13px;
+}
+
+
+.chat-header-new-chat {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border: 1px solid #494154;
+  border-radius: 10px;
+
+  background-color: #30273d;
+  color: #f5f1fa;
+
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.chat-header-new-chat:hover {
+  background-color: #30273d;
+}
+
+.chat-header-new-chat:focus-visible {
+  outline: 2px solid #c6acf2;
+  outline-offset: 2px;
 }

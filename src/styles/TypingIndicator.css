@@ -1,0 +1,49 @@
+
+.typing-indicator {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.typing-indicator-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+
+  border-radius: 50%;
+  background-color: #30273d;
+  color: #c6acf2;
+}
+
+.typing-indicator-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 16px;
+  border-radius: 14px;
+  background-color: #26222d;
+
+  color: #c6acf2;
+  font-size: 13px;
+}
+
+.typing-indicator-spinner {
+  animation: nyra-spin 1s linear infinite;
+}
+
+@keyframes nyra-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .typing-indicator-spinner {
+    animation: none;
+  }
+}

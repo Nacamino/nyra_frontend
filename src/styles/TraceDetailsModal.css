@@ -1,0 +1,69 @@
+
+.trace-modal {
+  width: min(720px, calc(100vw - 40px));
+  max-height: 85vh;
+
+  padding: 0;
+  border: 1px solid #554660;
+  border-radius: 16px;
+
+  background-color: #211d29;
+  color: #f5f1fa;
+
+  overflow: hidden;
+}
+
+.trace-modal::backdrop {
+  background-color: rgba(0, 0, 0, 0.7);
+  backdrop-filter: blur(4px);
+}
+
+.trace-modal-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 20px 24px;
+  border-bottom: 1px solid #34303c;
+}
+
+.trace-modal-header h2 {
+  margin: 0;
+  font-size: 17px;
+}
+
+.trace-modal-close {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 34px;
+  height: 34px;
+
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: #c6acf2;
+  cursor: pointer;
+}
+
+.trace-modal-close:hover {
+  background-color: #372b44;
+}
+
+.trace-modal-close:focus-visible {
+  outline: 2px solid #c6acf2;
+  outline-offset: 2px;
+}
+
+.trace-modal-body {
+  max-height: calc(85vh - 76px);
+  overflow-y: auto;
+}
+
+/* El modal administra el contenedor exterior. */
+.trace-modal .trace-details {
+  border: none;
+  border-radius: 0;
+  overflow: visible;
+}
