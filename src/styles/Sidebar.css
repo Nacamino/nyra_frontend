@@ -10,8 +10,8 @@
   padding: 24px 16px;
   overflow: hidden;
 
-  background-color: #1a1821;
-  border-right: 1px solid #34303c;
+  background-color: var(--nyra-sidebar-bg);
+  border-right: 1px solid var(--nyra-border);
 }
 
 .sidebar-brand {
@@ -22,21 +22,21 @@
 }
 
 .sidebar-logo {
-  color: #c6acf2;
+  color: var(--nyra-accent);
   font-size: 32px;
 }
 
 .sidebar-brand h2 {
   margin: 0;
   font-size: 22px;
-  color: #f5f1fa;
+  color: var(--nyra-text-primary);
   letter-spacing: 2px;
 }
 
 .sidebar-brand p {
   margin: 4px 0 0;
   font-size: 10px;
-  color: #a99eb7;
+  color: var(--nyra-text-muted);
 }
 
 .sidebar-nav {
@@ -56,7 +56,7 @@
   border-radius: 10px;
 
   background: transparent;
-  color: #aaa4b3;
+  color: var(--nyra-text-muted);
   font: inherit;
   font-size: 14px;
   text-align: left;
@@ -72,17 +72,17 @@
 }
 
 .sidebar-link--active {
-  background-color: #282233;
-  color: #c6acf2;
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-accent);
 }
 
 .sidebar-link:hover {
-  background-color: #282233;
-  color: #f5f1fa;
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-text-primary);
 }
 
 .sidebar-link:focus-visible {
-  outline: 2px solid #c6acf2;
+  outline: 2px solid var(--nyra-accent);
   outline-offset: 2px;
 }
 
@@ -114,4 +114,5 @@
   overflow: hidden;
   padding: 0;
   border-right: none;
+  color: var(--nyra-text-muted);
 }

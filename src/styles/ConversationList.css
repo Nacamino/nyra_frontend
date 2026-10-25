@@ -139,3 +139,62 @@
   outline-offset: 2px;
 }
 
+.conversation-list-row {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-width: 0;
+}
+
+.conversation-list-row .conversation-list-item {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+}
+
+.conversation-list-name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.conversation-list-delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+
+  width: 30px;
+  height: 30px;
+
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--nyra-text-muted);
+
+  cursor: pointer;
+
+  opacity: 0;
+  transition: opacity 0.15s ease;
+}
+
+.conversation-list-row:hover .conversation-list-delete,
+.conversation-list-row:focus-within .conversation-list-delete {
+  opacity: 1;
+}
+
+.conversation-list-delete:hover {
+  color: #e99ba8;
+  background: rgba(233, 155, 168, 0.12);
+}
+
+.conversation-list-delete:focus-visible {
+  opacity: 1;
+  outline: 2px solid var(--nyra-accent);
+}
+
+@media (hover: none) {
+  .conversation-list-delete {
+    opacity: 1;
+  }
+}

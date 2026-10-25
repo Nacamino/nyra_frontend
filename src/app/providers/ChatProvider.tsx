@@ -81,6 +81,15 @@ const addMessage = (
     })
   );
 };
+const deleteConversation = (id: string) => {
+  setConversations((previous) =>
+    previous.filter((conversation) => conversation.id !== id)
+  );
+
+  setActiveConversationId((previous) =>
+    previous === id ? null : previous
+  );
+};
 
 
   return (
@@ -92,6 +101,7 @@ const addMessage = (
         createConversation,
         selectConversation,
         addMessage,
+        deleteConversation
       }}
     >
       {children}

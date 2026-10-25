@@ -25,6 +25,7 @@ const {
   activeConversationId,
   selectConversation,
   createConversation,
+  deleteConversation,
 } = useChat();
 
   const navigate = useNavigate();
@@ -73,9 +74,10 @@ const {
       {isChatPage && (
       <ConversationList
         conversations={conversations}
-        activeConversationId={activeConversationId ?? ""}
-        onSelectConversation={handleSelectConversation}
-        onNewChat={handleNewChat}
+        activeConversationId={activeConversationId}
+        onSelectConversation={selectConversation}
+        onNewChat={createConversation}
+        onDeleteConversation={deleteConversation}
       />
     )}
 

@@ -1,5 +1,5 @@
 import "../../../styles/ChatHeader.css";
-import { BrainCircuit, Cpu, ChevronDown, Plus } from "lucide-react";
+import { BrainCircuit, Cpu, ChevronDown } from "lucide-react";
 
 export function ChatHeader() {
   return (

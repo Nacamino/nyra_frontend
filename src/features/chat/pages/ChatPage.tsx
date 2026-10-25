@@ -1,10 +1,8 @@
 
 import { ChatHeader } from "../components/ChatHeader";
 import { MessageList } from "../components/MessageList";
-import { mockMessages } from "../mocks/mockMessages";
 import { ChatInput } from "../components/ChatInput";
 import { TypingIndicator } from "../components/TypingIndicator";
-import type { Conversation } from "../types/conversation.types";
 import "../../../styles/ChatPage.css";
 import { useState, useRef, useEffect } from "react";
 import type { ChatMessage } from "../types/message.types";
@@ -17,7 +15,6 @@ export function ChatPage() {
   const {
   activeConversationId,
   messages,
-  createConversation,
   addMessage,
 } = useChat();
 
@@ -45,15 +42,6 @@ export function ChatPage() {
     };
   }, []);
 
-  // 5. Crear conversación
-  const handleNewChat = () => {
-    if (isLoading) return;
-
-    createConversation();
-  };
-
-  // 6. Seleccionar conversación
-  // 7. Enviar mensaje
   const handleSendMessage = (content: string) => {
     if (isLoading || !activeConversationId) return;
 

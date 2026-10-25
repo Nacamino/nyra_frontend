@@ -2,30 +2,46 @@
   display: flex;
   width: 100%;
   min-height: 100vh;
-  background-color: #101015;
-  color: #e3d3f7;
+  background-color: var(--nyra-bg);
+  color: var(--nyra-text-primary);
 }
 
 .app-sidebar {
   width: 240px;
   flex-shrink: 0;
   padding: 24px;
-  background-color: #1a1821;
-  border-right: 1px solid #34303c;
+  background-color: var(--nyra-sidebar-bg);
+  border-right: 1px solid var(--nyra-border);
 }
 
 .app-sidebar h2 {
   margin: 0;
   font-size: 24px;
+  color: var(--nyra-text-primary);
 }
 
 .app-sidebar p {
   font-size: 12px;
-  color: #a88bc7;
+  color: var(--nyra-accent);
 }
 
 .app-content {
   flex: 1;
   min-width: 0;
   padding: 0px 32px;
+}
+
+
+/* Background appearance */
+
+:root[data-background="gradient"] .app-content {
+  background-image: linear-gradient(
+    135deg,
+    var(--nyra-bg) 0%,
+    color-mix(
+      in srgb,
+      var(--nyra-accent) 14%,
+      var(--nyra-bg)
+    ) 100%
+  );
 }
