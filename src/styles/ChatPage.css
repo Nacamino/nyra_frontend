@@ -23,7 +23,7 @@
 .chat-page-header {
   flex-shrink: 0;
   padding-bottom: 20px;
-  border-bottom: 1px solid #34303c;
+  border-bottom: 1px solid var(--nyra-border);
 }
 
 .chat-page-messages {
@@ -40,5 +40,5 @@
 .chat-page-footer {
   flex-shrink: 0;
   padding-top: 20px;
-  border-top: 1px solid #34303c;
+  border-top: 1px solid var(--nyra-border);
 }

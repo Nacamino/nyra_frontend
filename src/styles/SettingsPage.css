@@ -1,30 +1,44 @@
+
+/* =========================================
+   NYRA — Settings Page
+   ========================================= */
+
 .settings-page {
+    display: flex;
+    flex-direction: column;
+
     width: 100%;
-    max-width: 900px;
-    margin: 0 auto;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
     text-align: left;
+    overflow: hidden;
 }
 
-.settings-header {
-    margin-bottom: 28px;
+.settings-page-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    flex: 1;
+    min-height: 0;
+
+    padding: 24px;
+    overflow-y: auto;
 }
 
-.settings-header h1 {
-    margin: 0 0 8px;
-    font-size: 28px;
-    font-weight: 600;
-    color: var(--nyra-text-primary);
-}
-
-.settings-header p {
-    font-size: 14px;
-    color: var(--nyra-text-muted);
-}
+/* =========================================
+   Settings List
+   ========================================= */
 
 .settings-list {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 16px;
+
+    width: 100%;
+    min-width: 0;
 }
 
 .setting-row {
@@ -32,10 +46,14 @@
     align-items: center;
     justify-content: space-between;
     gap: 20px;
-    padding: 20px;
+
+    width: 100%;
+    min-width: 0;
+    padding: 24px 20px;
+
     background-color: var(--nyra-card-bg);
     border: 1px solid var(--nyra-border);
-    border-radius: 10px;
+    border-radius: 14px;
 }
 
 .setting-row__label {
@@ -50,18 +68,9 @@
     text-align: right;
 }
 
-@media (max-width: 600px) {
-    .setting-row {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 8px;
-    }
-
-    .setting-row__options {
-        text-align: left;
-    }
-}
-
+/* =========================================
+   Theme Selector
+   ========================================= */
 
 .theme-selector {
     display: flex;
@@ -72,12 +81,16 @@
 
 .theme-selector__button {
     padding: 8px 12px;
+
+    font: inherit;
     font-size: 13px;
-    font-family: inherit;
+
     color: var(--nyra-accent);
     background: transparent;
+
     border: 1px solid var(--nyra-border);
     border-radius: 8px;
+
     cursor: pointer;
 }
 
@@ -95,15 +108,14 @@
         var(--nyra-accent) 20%,
         var(--nyra-card-bg)
     );
+
     border-color: var(--nyra-accent);
     color: var(--nyra-text-primary);
 }
 
-@media (max-width: 600px) {
-    .theme-selector {
-        justify-content: flex-start;
-    }
-}
+/* =========================================
+   Accent Color Selector
+   ========================================= */
 
 .accent-selector {
     display: flex;
@@ -116,18 +128,28 @@
     display: flex;
     align-items: center;
     gap: 6px;
+
     padding: 8px 10px;
+
     font: inherit;
     font-size: 12px;
+
     color: var(--nyra-text-muted);
     background: transparent;
+
     border: 1px solid var(--nyra-border);
     border-radius: 8px;
+
     cursor: pointer;
 }
 
 .accent-selector__button:hover {
-    background: var(--nyra-card-bg);
+    background-color: color-mix(
+        in srgb,
+        var(--nyra-accent) 12%,
+        var(--nyra-card-bg)
+    );
+
     color: var(--nyra-text-primary);
 }
 
@@ -139,6 +161,7 @@
 .accent-selector__swatch {
     width: 14px;
     height: 14px;
+
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -159,11 +182,9 @@
     background-color: #93c5fd;
 }
 
-@media (max-width: 600px) {
-    .accent-selector {
-        justify-content: flex-start;
-    }
-}
+/* =========================================
+   Background Selector
+   ========================================= */
 
 .background-selector {
     display: flex;
@@ -174,12 +195,16 @@
 
 .background-selector__button {
     padding: 8px 12px;
+
     font: inherit;
     font-size: 13px;
+
     color: var(--nyra-accent);
     background: transparent;
+
     border: 1px solid var(--nyra-border);
     border-radius: 8px;
+
     cursor: pointer;
 }
 
@@ -197,52 +222,14 @@
         var(--nyra-accent) 20%,
         var(--nyra-card-bg)
     );
+
     border-color: var(--nyra-accent);
     color: var(--nyra-text-primary);
 }
 
-.background-selector__button:focus-visible {
-    outline: 2px solid var(--nyra-accent);
-    outline-offset: 2px;
-}
-
-@media (max-width: 600px) {
-    .background-selector {
-        justify-content: flex-start;
-    }
-}
-
-
-.settings-actions {
-    display: flex;
-    justify-content: flex-end;
-    margin-top: 24px;
-}
-
-.settings-reset-button {
-    padding: 10px 16px;
-    font: inherit;
-    font-size: 13px;
-    color: var(--nyra-accent);
-    background: transparent;
-    border: 1px solid var(--nyra-accent);
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.settings-reset-button:hover {
-    background: color-mix(
-        in srgb,
-        var(--nyra-accent) 12%,
-        var(--nyra-bg)
-    );
-}
-
-.settings-reset-button:focus-visible {
-    outline: 2px solid var(--nyra-accent);
-    outline-offset: 2px;
-}
-
+/* =========================================
+   Model Status
+   ========================================= */
 
 .model-status {
     display: flex;
@@ -256,6 +243,7 @@
     display: flex;
     flex-direction: column;
     gap: 4px;
+
     text-align: right;
 }
 
@@ -274,6 +262,7 @@
     display: flex;
     align-items: center;
     gap: 8px;
+
     color: var(--nyra-text-muted);
     font-size: 12px;
 }
@@ -281,6 +270,7 @@
 .model-status__indicator {
     width: 8px;
     height: 8px;
+
     border-radius: 50%;
     flex-shrink: 0;
 }
@@ -297,7 +287,82 @@
     background-color: var(--nyra-text-muted);
 }
 
+/* =========================================
+   Settings Actions
+   ========================================= */
+
+.settings-actions {
+    display: flex;
+    justify-content: flex-end;
+
+    width: 100%;
+    margin-top: 8px;
+}
+
+.settings-reset-button {
+    padding: 10px 16px;
+
+    font: inherit;
+    font-size: 13px;
+
+    color: var(--nyra-accent);
+    background: transparent;
+
+    border: 1px solid var(--nyra-accent);
+    border-radius: 8px;
+
+    cursor: pointer;
+}
+
+.settings-reset-button:hover {
+    background-color: color-mix(
+        in srgb,
+        var(--nyra-accent) 12%,
+        var(--nyra-bg)
+    );
+}
+
+/* =========================================
+   Focus States
+   ========================================= */
+
+.theme-selector__button:focus-visible,
+.accent-selector__button:focus-visible,
+.background-selector__button:focus-visible,
+.settings-reset-button:focus-visible {
+    outline: 2px solid var(--nyra-accent);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   Responsive
+   ========================================= */
+
+@media (max-width: 800px) {
+    .settings-page-content {
+        padding: 16px;
+    }
+
+    .setting-row {
+        padding: 18px 16px;
+    }
+}
+
 @media (max-width: 600px) {
+    .setting-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 12px;
+    }
+
+    .setting-row__options {
+        width: 100%;
+        text-align: left;
+    }
+
+    .theme-selector,
+    .accent-selector,
+    .background-selector,
     .model-status {
         justify-content: flex-start;
     }

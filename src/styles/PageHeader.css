@@ -1,4 +1,4 @@
-.chat-header {
+.page-header {
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -9,13 +9,13 @@
   border-bottom: 1px solid #34303c;
 }
 
-.chat-header-identity {
+.page-header-identity {
   display: flex;
   align-items: center;
   gap: 12px;
 }
 
-.chat-header-icon {
+.page-header-icon {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -24,62 +24,66 @@
   height: 52px;
   border-radius: 12px;
 
-  background-color: #30273d;
-  color: #c5a4f5;
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-accent);
   font-size: 25px;
 }
 
-.chat-header-title {
+.page-header-title {
   margin: 0;
   font-size: 20px;
-  color: #f5f1fa;
+  color: var(--nyra-text-primary);
 }
 
-.chat-header-status {
+.page-header-status {
   margin: 0 0 0;
   font-size: 12px;
-  color: #aca5bb;
+  color: var(--nyra-text-muted);
 }
 
-.chat-header-model {
+.page-header-model {
   display: flex;
   align-items: center;
   align-content: center;
   gap: 12px;
 
   padding: 10px 10px;
-  border: 1px solid #443b52;
+  border: 1px solid var(--nyra-border);
   border-radius: 10px;
 
-  background-color: #30273d;
-  color: #e4dbed;
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-accent);
   font-size: 13px;
 }
 
 
-.chat-header-new-chat {
+.page-header-new-page {
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 8px;
 
   padding: 10px 14px;
-  border: 1px solid #494154;
+  border: 1px solid var(--nyra-border);
   border-radius: 10px;
 
-  background-color: #30273d;
-  color: #f5f1fa;
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-text-primary);
 
   font: inherit;
   font-size: 13px;
   cursor: pointer;
 }
 
-.chat-header-new-chat:hover {
-  background-color: #30273d;
+.page-header-new-page:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--nyra-accent) 18%,
+    var(--nyra-card-bg)
+  );
 }
 
-.chat-header-new-chat:focus-visible {
-  outline: 2px solid #c6acf2;
+.page-header-new-page:focus-visible {
+  outline: 2px solid var(--nyra-accent);
   outline-offset: 2px;
 }

@@ -1,0 +1,618 @@
+/* =========================================
+   NYRA — Tools Page
+   ========================================= */
+
+.tools-page {
+    display: flex;
+    flex-direction: column;
+
+    width: 100%;
+    height: 100%;
+    min-width: 0;
+    min-height: 0;
+
+    overflow: hidden;
+}
+
+.tools-page-content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    flex: 1;
+    min-height: 0;
+
+    padding: 24px;
+    overflow-y: auto;
+}
+
+/* =========================================
+   Panels
+   ========================================= */
+
+.tools-panel {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+
+    flex-shrink: 0;
+    width: 100%;
+    min-width: 0;
+    padding: 20px;
+
+    border: 1px solid var(--nyra-border);
+    border-radius: 14px;
+
+    background-color: color-mix(in srgb, var(--nyra-card-bg) 70%, var(--nyra-bg));
+}
+
+.tools-section-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.tools-section-heading {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    min-width: 0;
+}
+
+.tools-section-heading h2 {
+    margin: 0 0 5px;
+
+    color: var(--nyra-text-primary);
+    font-size: 17px;
+    font-weight: 600;
+}
+
+.tools-section-heading p {
+    color: var(--nyra-text-muted);
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.tools-section-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 52px;
+    height: 52px;
+
+    border-radius: 12px;
+}
+
+.tools-section-icon--purple {
+    color: #d5b1ff;
+    background-color: rgba(164, 106, 215, 0.19);
+}
+
+.tools-section-icon--blue {
+    color: #8dbbff;
+    background-color: rgba(69, 115, 242, 0.21);
+}
+
+.tools-section-icon--green {
+    color: #7ce6ba;
+    background-color: rgba(50, 180, 130, 0.18);
+}
+
+/* =========================================
+   Buttons
+   ========================================= */
+
+.tools-outline-button,
+.tools-primary-button,
+.tools-text-button,
+.tools-icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    font: inherit;
+    cursor: pointer;
+
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease,
+        color 0.15s ease;
+}
+
+.tools-outline-button {
+    padding: 9px 15px;
+
+    color: var(--nyra-accent);
+    background-color: transparent;
+
+    border: 1px solid var(--nyra-border);
+    border-radius: 9px;
+
+    font-size: 12px;
+    white-space: nowrap;
+}
+
+.tools-outline-button:hover {
+    border-color: var(--nyra-accent);
+    background-color: color-mix(in srgb, var(--nyra-accent) 10%, transparent);
+}
+
+.tools-primary-button {
+    min-height: 42px;
+    padding: 0 22px;
+
+    border: 1px solid transparent;
+    border-radius: 9px;
+
+    background-color: var(--nyra-accent);
+    color: var(--nyra-bg);
+
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.tools-primary-button:hover {
+    filter: brightness(1.08);
+}
+
+.tools-text-button {
+    padding: 8px 11px;
+
+    border: none;
+    border-radius: 8px;
+
+    background-color: color-mix(in srgb, var(--nyra-accent) 10%, transparent);
+
+    color: var(--nyra-accent);
+    font-size: 12px;
+}
+
+.tools-text-button:hover {
+    background-color: color-mix(in srgb, var(--nyra-accent) 18%, transparent);
+}
+
+.tools-icon-button {
+    width: 30px;
+    height: 30px;
+
+    border: 1px solid var(--nyra-border);
+    border-radius: 8px;
+
+    background-color: var(--nyra-card-bg);
+    color: var(--nyra-text-muted);
+}
+
+.tools-icon-button:hover {
+    border-color: var(--nyra-accent);
+    color: var(--nyra-accent);
+}
+
+.tools-page button:focus-visible,
+.tools-page input:focus-visible,
+.tools-page select:focus-visible {
+    outline: 2px solid var(--nyra-accent);
+    outline-offset: 2px;
+}
+
+/* =========================================
+   File Tables
+   ========================================= */
+
+.tools-table-scroll {
+    width: 100%;
+    min-width: 0;
+
+    overflow-x: auto;
+
+    border: 1px solid var(--nyra-border);
+    border-radius: 10px;
+}
+
+.tools-table {
+    width: 100%;
+    min-width: 800px;
+
+    border-collapse: collapse;
+    font-size: 12px;
+    text-align: left;
+}
+
+.tools-table th {
+    padding: 12px 14px;
+
+    background-color: color-mix(in srgb, var(--nyra-card-bg) 60%, var(--nyra-bg));
+
+    color: var(--nyra-text-muted);
+    font-size: 11px;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.tools-table td {
+    padding: 9px 14px;
+
+    border-top: 1px solid var(--nyra-border);
+
+    color: var(--nyra-text-muted);
+    white-space: nowrap;
+}
+
+.tools-table tbody tr:hover {
+    background-color: color-mix(in srgb, var(--nyra-accent) 6%, transparent);
+}
+
+.tools-table .tools-table-row--selected {
+    background-color: color-mix(in srgb, var(--nyra-accent) 12%, transparent);
+}
+
+.tools-file-name {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    padding: 0;
+    border: none;
+    background-color: transparent;
+
+    color: var(--nyra-text-primary);
+    font: inherit;
+    font-weight: 500;
+    text-align: left;
+
+    cursor: pointer;
+}
+
+.tools-file-name:hover {
+    color: var(--nyra-accent);
+}
+
+.tools-file-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+
+    width: 26px;
+    height: 28px;
+
+    border-radius: 5px;
+    background-color: var(--nyra-card-bg);
+    color: var(--nyra-text-muted);
+}
+
+.tools-file-icon--pdf {
+    background-color: rgba(225, 82, 90, 0.2);
+    color: #ee777e;
+}
+
+.tools-file-icon--excel,
+.tools-file-icon--csv {
+    background-color: rgba(65, 185, 135, 0.2);
+    color: #7ee0af;
+}
+
+.tools-file-icon--python,
+.tools-file-icon--jupyter {
+    background-color: rgba(90, 146, 235, 0.2);
+    color: #93baff;
+}
+
+.tools-file-icon--powerpoint {
+    background-color: rgba(234, 116, 79, 0.2);
+    color: #f39e7d;
+}
+
+/* =========================================
+    File Type Badges
+   ========================================= */
+
+.tools-type-badge {
+    display: inline-flex;
+    align-items: center;
+
+    padding: 5px 9px;
+
+    border-radius: 7px;
+    background-color: var(--nyra-card-bg);
+
+    color: var(--nyra-text-muted);
+    font-size: 11px;
+}
+
+.tools-type-badge--pdf {
+    background-color: rgba(220, 73, 83, 0.15);
+    color: #f09098;
+}
+
+.tools-type-badge--excel,
+.tools-type-badge--csv {
+    background-color: rgba(57, 176, 121, 0.16);
+    color: #87deb1;
+}
+
+.tools-type-badge--python,
+.tools-type-badge--jupyter {
+    background-color: rgba(80, 135, 230, 0.16);
+    color: #9abfff;
+}
+
+.tools-type-badge--powerpoint {
+    background-color: rgba(225, 113, 67, 0.15);
+    color: #f5a17e;
+}
+
+.tools-file-location {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.tools-row-actions {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+}
+
+/* =========================================
+    Search
+   ========================================= */
+
+.tools-search-controls {
+    display: grid;
+    grid-template-columns: minmax(200px, 1fr) 160px 185px auto;
+    gap: 10px;
+}
+
+.tools-search-field {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+
+    min-width: 0;
+    height: 42px;
+    padding: 0 12px;
+
+    border: 1px solid var(--nyra-border);
+    border-radius: 9px;
+
+    background-color: var(--nyra-bg);
+    color: var(--nyra-text-muted);
+}
+
+.tools-search-field:focus-within {
+    border-color: var(--nyra-accent);
+}
+
+.tools-search-field input {
+    width: 100%;
+    min-width: 0;
+    height: 100%;
+
+    border: none;
+    outline: none;
+    background-color: transparent;
+
+    color: var(--nyra-text-primary);
+    font-size: 13px;
+}
+
+.tools-search-field input::placeholder {
+    color: var(--nyra-text-muted);
+}
+
+.tools-select {
+    width: 100%;
+    min-width: 0;
+    height: 42px;
+    padding: 0 12px;
+
+    border: 1px solid var(--nyra-border);
+    border-radius: 9px;
+
+    background-color: var(--nyra-bg);
+    color: var(--nyra-text-primary);
+
+    font-size: 12px;
+    cursor: pointer;
+}
+
+.tools-search-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 12px;
+
+    color: var(--nyra-text-muted);
+    font-size: 12px;
+}
+
+.tools-empty-results {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+
+    min-height: 110px;
+
+    color: var(--nyra-text-muted);
+    font-size: 13px;
+}
+
+/* =========================================
+    File Details
+   ========================================= */
+
+.tools-details-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+}
+
+.tools-dropzone {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 150px;
+    padding: 20px;
+
+    border: 1px dashed color-mix(in srgb, var(--nyra-accent) 50%, var(--nyra-border));
+
+    border-radius: 11px;
+
+    background-color: color-mix(in srgb, var(--nyra-accent) 3%, var(--nyra-bg));
+
+    color: var(--nyra-text-primary);
+    font-size: 13px;
+
+    cursor: pointer;
+    transition:
+        background-color 0.15s ease,
+        border-color 0.15s ease;
+}
+
+.tools-dropzone:hover,
+.tools-dropzone--dragging {
+    border-color: var(--nyra-accent);
+    background-color: color-mix(in srgb, var(--nyra-accent) 10%, var(--nyra-bg));
+}
+
+.tools-dropzone:focus-visible {
+    outline: 2px solid var(--nyra-accent);
+    outline-offset: 2px;
+}
+
+.tools-dropzone svg {
+    color: var(--nyra-text-muted);
+}
+
+.tools-dropzone-link {
+    color: var(--nyra-accent);
+    text-decoration: underline;
+}
+
+.tools-file-details {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    min-width: 0;
+    min-height: 150px;
+    padding: 18px;
+
+    border: 1px solid var(--nyra-border);
+    border-radius: 11px;
+
+    background-color: color-mix(in srgb, var(--nyra-bg) 80%, var(--nyra-card-bg));
+}
+
+.tools-details-placeholder {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+
+    color: var(--nyra-text-muted);
+    text-align: center;
+}
+
+.tools-details-placeholder strong {
+    color: var(--nyra-text-primary);
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.tools-details-placeholder p {
+    font-size: 12px;
+}
+
+.tools-details-content {
+    width: 100%;
+    min-width: 0;
+}
+
+.tools-details-content h3 {
+    margin: 0 0 15px;
+
+    color: var(--nyra-accent);
+    font-size: 14px;
+    overflow-wrap: anywhere;
+}
+
+.tools-detail-row {
+    display: grid;
+    grid-template-columns: 18px minmax(85px, 1fr) minmax(0, 2fr);
+    align-items: center;
+    gap: 10px;
+
+    padding: 8px 0;
+    border-bottom: 1px solid var(--nyra-border);
+
+    font-size: 12px;
+}
+
+.tools-detail-row:last-child {
+    border-bottom: none;
+}
+
+.tools-detail-row svg,
+.tools-detail-row span {
+    color: var(--nyra-text-muted);
+}
+
+.tools-detail-row strong {
+    min-width: 0;
+
+    color: var(--nyra-text-primary);
+    font-weight: 500;
+    text-align: right;
+    overflow-wrap: anywhere;
+}
+
+/* =========================================
+    Responsive
+   ========================================= */
+
+@media (max-width: 1200px) {
+    .tools-search-controls {
+        grid-template-columns: minmax(200px, 1fr) 1fr;
+    }
+}
+
+@media (max-width: 800px) {
+    .tools-page-content {
+        padding: 16px;
+    }
+
+    .tools-panel {
+        padding: 14px;
+    }
+
+    .tools-details-layout,
+    .tools-search-controls {
+        grid-template-columns: 1fr;
+    }
+
+    .tools-section-heading {
+        gap: 10px;
+    }
+
+    .tools-section-icon {
+        width: 44px;
+        height: 44px;
+    }
+
+    .tools-section-header {
+        align-items: flex-start;
+    }
+}

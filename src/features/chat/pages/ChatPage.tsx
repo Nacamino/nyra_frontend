@@ -1,5 +1,5 @@
 
-import { ChatHeader } from "../components/ChatHeader";
+import { PageHeader } from "../../../components/layout/PageHeader";
 import { MessageList } from "../components/MessageList";
 import { ChatInput } from "../components/ChatInput";
 import { TypingIndicator } from "../components/TypingIndicator";
@@ -79,7 +79,10 @@ export function ChatPage() {
 return (
   <section className="chat-page">
     <div className="chat-page-workspace">
-      <ChatHeader
+      <PageHeader
+        title="NYRA Chat"
+        subtitle="Modelo no conectado"
+        variant="chat"
       />
 
       <div

@@ -15,8 +15,8 @@
   flex-shrink: 0;
 
   border-radius: 50%;
-  background-color: #30273d;
-  color: #c6acf2;
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-accent);
 }
 
 .typing-indicator-content {
@@ -26,9 +26,9 @@
 
   padding: 14px 16px;
   border-radius: 14px;
-  background-color: #26222d;
+  background-color: var(--nyra-card-bg);
 
-  color: #c6acf2;
+  color: var(--nyra-accent);
   font-size: 13px;
 }
 
