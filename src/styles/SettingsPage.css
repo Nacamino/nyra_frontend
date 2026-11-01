@@ -248,14 +248,22 @@
 }
 
 .model-status__name {
-    color: var(--nyra-text-primary);
+    color: color-mix(
+        in srgb,
+        var(--nyra-text-primary) 88%,
+        var(--nyra-text-muted)
+    );
     font-size: 13px;
     font-weight: 600;
 }
 
 .model-status__description {
-    color: var(--nyra-text-muted);
-    font-size: 11px;
+    color: color-mix(
+        in srgb,
+        var(--nyra-text-muted) 78%,
+        var(--nyra-text-primary)
+    );
+    font-size: 12px;
 }
 
 .model-status__connection {
@@ -368,6 +376,9 @@
     }
 
     .model-status__info {
-        text-align: left;
+        display: flex;
+        flex-direction: column;
+        gap: 2px;
+        text-align: right;
     }
 }

@@ -34,7 +34,7 @@ export function PageHeader({
       </div>
 
       {variant === "chat" && (
-        <div className="chat-header-model">
+        <div className="page-header-model">
           <Cpu size={18} strokeWidth={1.7} />
           <span>Modelo local</span>
           <ChevronDown size={16} />

@@ -7,7 +7,6 @@ import "../../../styles/ToolsPage.css";
 
 export function ToolsPage() {
     const {
-        recentFiles,
         filteredFiles,
         visibleRecentFiles,
         visibleSearchResults,
