@@ -1,28 +1,46 @@
 
+import { useEffect, useRef, useState } from "react";
 import { ChatHeader } from "../components/ChatHeader";
 import { MessageList } from "../components/MessageList";
 import { ChatInput } from "../components/ChatInput";
 import { TypingIndicator } from "../components/TypingIndicator";
-import "../../../styles/ChatPage.css";
-import { useState, useRef, useEffect } from "react";
-import type { ChatMessage } from "../types/message.types";
 import { useChat } from "../hooks/useChat";
-
-
+import { sendMessageToNyra } from "../../../services/chatApi";
+import type { ChatMessage } from "../types/message.types";
+import "../../../styles/ChatPage.css";
+import { ActionConfirmationModal } from "../../../components/modals/ActionConfirmationModal";
+import type { PendingAction } from "../../../services/chatApi";
+import { confirmAction, cancelAction } from "../../../services/actionApi";
 
 export function ChatPage() {
   // 1. Estado compartido de las conversaciones
   const {
-  activeConversationId,
-  messages,
-  addMessage,
-} = useChat();
+    activeConversationId,
+    messages,
+    addMessage,
+  } = useChat();
 
-  // 2. Estado temporal de la interfaz
-  const [isLoading, setIsLoading] = useState(false);
+  // 2. Estado de la solicitud HTTP
+  const [pendingConversationId, setPendingConversationId] =
+    useState<string | null>(null);
+  const [pendingAction, setPendingAction] =
+  useState<PendingAction | null>(null);
+
+  const [requestError, setRequestError] = useState<{
+    conversationId: string;
+    message: string;
+  } | null>(null);
+
+  // Evita solicitudes duplicadas antes de que React
+  // actualice el estado visual.
+  const pendingRef = useRef(false);
 
   const messagesContainerRef = useRef<HTMLDivElement>(null);
-  const timeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+
+  const isCurrentChatLoading =
+    pendingConversationId === activeConversationId &&
+    pendingConversationId !== null;
 
   // 3. Scroll automático
   useEffect(() => {
@@ -31,70 +49,125 @@ export function ChatPage() {
     if (container) {
       container.scrollTop = container.scrollHeight;
     }
-  }, [messages, isLoading]);
+  }, [messages, isCurrentChatLoading, requestError]);
 
-  // 4. Limpiar temporizadores al salir de Chat
-  useEffect(() => {
-    return () => {
-      if (timeoutRef.current !== null) {
-        clearTimeout(timeoutRef.current);
-      }
-    };
-  }, []);
+  // 4. Enviar mensajes a Claude
+  const handleSendMessage = async (content: string) => {
+    const trimmedContent = content.trim();
 
-  const handleSendMessage = (content: string) => {
-    if (isLoading || !activeConversationId) return;
+    if (
+      !trimmedContent ||
+      pendingRef.current ||
+      !activeConversationId
+    ) {
+      return;
+    }
 
-    // Guardamos el ID del chat al que pertenece
-    // esta solicitud.
+    // Conservamos el ID de la conversación original.
     const conversationId = activeConversationId;
+
+    // Capturamos el historial ANTES de agregar
+    // el mensaje nuevo para no enviarlo dos veces.
+    const history = messages.map(({ role, content }) => ({
+      role,
+      content,
+    }));
 
     const userMessage: ChatMessage = {
       id: crypto.randomUUID(),
       role: "user",
-      content,
+      content: trimmedContent,
       createdAt: new Date().toISOString(),
     };
 
-    addMessage(conversationId, userMessage);
-    setIsLoading(true);
+    pendingRef.current = true;
+    setPendingConversationId(conversationId);
+    setRequestError(null);
 
-    // Respuesta simulada de NYRA
-    timeoutRef.current = setTimeout(() => {
+    addMessage(conversationId, userMessage);
+
+    try {
+      const response = await sendMessageToNyra({
+        message: trimmedContent,
+        history,
+      });
+      console.log("[NYRA] Respuesta del backend:", response);
+console.log("[NYRA] Acción pendiente:", response.pending_action);
+      if (response.pending_action) {
+        setPendingAction(response.pending_action);
+      }
+
       const assistantMessage: ChatMessage = {
         id: crypto.randomUUID(),
         role: "assistant",
-        content: "Esta es una respuesta simulada de NYRA 💜",
+        content: response.reply,
         createdAt: new Date().toISOString(),
       };
 
+      // Se guarda en el chat original, aunque
+      // el usuario haya seleccionado otro.
       addMessage(conversationId, assistantMessage);
-      setIsLoading(false);
-      timeoutRef.current = null;
-    }, 1500);
+
+    } catch (error) {
+      console.error("Error al consultar NYRA:", error);
+
+      setRequestError({
+        conversationId,
+        message:
+          "No se pudo obtener una respuesta de NYRA. " +
+          "Verificá que el backend esté funcionando.",
+      });
+
+    } finally {
+      pendingRef.current = false;
+      setPendingConversationId(null);
+    }
+  };
+    const handleConfirmAction = async (actionId: string) => {
+    await confirmAction(actionId);
+    setPendingAction(null);
   };
 
-  // 8. Renderizado
-  
-return (
-  <section className="chat-page">
-    <div className="chat-page-workspace">
-      <ChatHeader
-      />
+  const handleCancelAction = async (actionId: string) => {
+    await cancelAction(actionId);
+    setPendingAction(null);
+  };
 
-      <div
-        className="chat-page-messages"
-        ref={messagesContainerRef}
-      >
-        <MessageList messages={messages} />
+  // 5. Renderizado
+  return (
+    <section className="chat-page">
+      <div className="chat-page-workspace">
+        <ChatHeader />
 
-        {isLoading && <TypingIndicator />}
+        <div
+          className="chat-page-messages"
+          ref={messagesContainerRef}
+        >
+          <MessageList messages={messages} />
+
+          {isCurrentChatLoading && <TypingIndicator />}
+
+          {requestError?.conversationId ===
+            activeConversationId && (
+            <p
+              role="alert"
+              className="chat-page-error"
+            >
+              {requestError.message}
+            </p>
+          )}
+        </div>
+
+        <footer className="chat-page-footer">
+          <ChatInput onSendMessage={handleSendMessage} />
+        </footer>
       </div>
-
-      <footer className="chat-page-footer">
-        <ChatInput onSendMessage={handleSendMessage} />
-      </footer>
-    </div>
-  </section>
-);
+          <ActionConfirmationModal
+      action={pendingAction}
+      onConfirm={handleConfirmAction}
+      onCancel={handleCancelAction}
+    />
+    </section>
+  );
 }
+

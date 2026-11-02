@@ -7,7 +7,7 @@ import {
   Settings,
   Monitor,
 } from "lucide-react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
 import { ConversationList } from "../../features/chat/components/ConversationList";
 import { useChat } from "../../features/chat/hooks/useChat";
@@ -28,19 +28,19 @@ const {
   deleteConversation,
 } = useChat();
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const location = useLocation();
 
   const isChatPage = location.pathname === "/";
 
-  const handleSelectConversation = (id: string) => {
-    selectConversation(id);
-    navigate("/");
-  };
-  const handleNewChat = () => {
-  createConversation();
-  navigate("/");
-  };
+  // const handleSelectConversation = (id: string) => {
+  //   selectConversation(id);
+  //   navigate("/");
+  // };
+  // const handleNewChat = () => {
+  // createConversation();
+  // navigate("/");
+  // };
   return (
     <aside className="sidebar">
       <div className="sidebar-brand">

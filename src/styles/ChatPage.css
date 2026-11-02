@@ -42,3 +42,20 @@
   padding-top: 20px;
   border-top: 1px solid #34303c;
 }
+
+.chat-page-error {
+  align-self: center;
+  max-width: 80%;
+
+  padding: 12px 16px;
+  margin: 12px 0;
+
+  border: 1px solid #b45360;
+  border-radius: 10px;
+
+  background: rgba(180, 83, 96, 0.12);
+  color: #e99ba8;
+
+  font-size: 13px;
+  text-align: center;
+}
