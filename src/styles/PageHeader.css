@@ -1,0 +1,92 @@
+.page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 16px;
+
+  padding: 12px 24px;
+  border-bottom: 1px solid var(--nyra-border);
+}
+
+.page-header-identity {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.page-header-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 52px;
+  height: 52px;
+  border-radius: 12px;
+
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-accent);
+  font-size: 25px;
+}
+
+.page-header-title {
+  margin: 0;
+  font-size: 20px;
+  color: var(--nyra-text-primary);
+}
+
+.page-header-status {
+  margin: 0 0 0;
+  font-size: 12px;
+  color: var(--nyra-text-muted);
+}
+
+.page-header-model {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+
+  padding: 12px 16px;
+
+  border: 1px solid var(--nyra-border);
+  border-radius: 10px;
+
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-accent);
+
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+
+.page-header-new-page {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  padding: 10px 14px;
+  border: 1px solid var(--nyra-border);
+  border-radius: 10px;
+
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-text-primary);
+
+  font: inherit;
+  font-size: 13px;
+  cursor: pointer;
+}
+
+.page-header-new-page:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--nyra-accent) 18%,
+    var(--nyra-card-bg)
+  );
+}
+
+.page-header-new-page:focus-visible {
+  outline: 2px solid var(--nyra-accent);
+  outline-offset: 2px;
+}

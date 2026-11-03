@@ -7,15 +7,15 @@
 
 .chat-input-container {
   padding: 10px;
-  border: 1px solid #494154;
+  border: 1px solid var(--nyra-border);
   border-radius: 16px;
-  background-color: #272330;
+  background-color: var(--nyra-card-bg);
 
   transition: border-color 0.2s;
 }
 
 .chat-input-container:focus-within {
-  border-color: #b79ad9;
+  border-color: var(--nyra-accent);
 }
 
 .chat-input-textarea {
@@ -27,7 +27,7 @@
   border: none;
   outline: none;
   background: transparent;
-  color: #f5f1fa;
+  color: var(--nyra-text-primary);
 
   font: inherit;
   font-size: 14px;
@@ -35,7 +35,7 @@
 }
 
 .chat-input-textarea::placeholder {
-  color: #a99eb7;
+  color: var(--nyra-text-muted);
 }
 
 .chat-input-actions {
@@ -48,7 +48,7 @@
 
 .chat-input-hint {
   font-size: 11px;
-  color: #a99eb7;
+  color: var(--nyra-text-muted);
 }
 
 .chat-input-send {
@@ -62,13 +62,19 @@
 
   border: none;
   border-radius: 10px;
-  background-color: #b79ad9;
-  color: #17121e;
+  background-color: var(--nyra-accent);
+  color: var(--nyra-bg);
   cursor: pointer;
+
+  transition: background-color 0.2s;
 }
 
 .chat-input-send:hover:not(:disabled) {
-  background-color: #d0b8ec;
+  background-color: color-mix(
+    in srgb,
+    var(--nyra-accent) 80%,
+    white
+  );
 }
 
 .chat-input-send:disabled {
@@ -77,6 +83,6 @@
 }
 
 .chat-input-send:focus-visible {
-  outline: 2px solid #d0b8ec;
+  outline: 2px solid var(--nyra-accent);
   outline-offset: 3px;
 }

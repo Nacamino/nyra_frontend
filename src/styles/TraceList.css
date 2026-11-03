@@ -20,11 +20,11 @@
 .trace-list-header h2 {
   margin: 0;
   font-size: 16px;
-  color: #f5f1fa;
+  color: var(--nyra-text-primary);
 }
 
 .trace-list-header span {
-  color: #aaa4b3;
+  color: var(--nyra-text-muted);
   font-size: 12px;
 }
 
@@ -47,28 +47,34 @@
   width: 100%;
   padding: 14px;
 
-  border: 1px solid #34303c;
+  border: 1px solid var(--nyra-border);
   border-radius: 12px;
 
-  background-color: #24202d;
-  color: #f5f1fa;
+  background-color: var(--nyra-card-bg);
+  color: var(--nyra-text-primary);
   font: inherit;
   text-align: left;
 
   cursor: pointer;
+  transition: border-color 0.2s, background-color 0.2s;
 }
 
 .trace-list-item:hover {
-  border-color: #6f5b85;
+  border-color: var(--nyra-accent);
 }
 
-.trace-list-item--selected {
-  background-color: #372b44;
-  border-color: #8f73af;
+.trace-list-item--selected,
+.trace-list-item--selected:hover {
+  background-color: color-mix(
+    in srgb,
+    var(--nyra-accent) 15%,
+    var(--nyra-card-bg)
+  );
+  border-color: var(--nyra-accent);
 }
 
 .trace-list-item:focus-visible {
-  outline: 2px solid #c6acf2;
+  outline: 2px solid var(--nyra-accent);
   outline-offset: 2px;
 }
 
@@ -92,7 +98,7 @@
 }
 
 .trace-list-item-id {
-  color: #aaa4b3;
+  color: var(--nyra-text-muted);
   font-size: 11px;
 }
 
@@ -109,8 +115,10 @@
 }
 
 .trace-list-duration {
-  color: #bfb5cb;
+  color: var(--nyra-text-muted);
 }
+
+/* Execution statuses */
 
 .trace-list-status--completed,
 .trace-list-status-icon--completed {
@@ -124,5 +132,5 @@
 
 .trace-list-status--running,
 .trace-list-status-icon--running {
-  color: #c6acf2;
+  color: var(--nyra-accent);
 }

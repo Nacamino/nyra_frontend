@@ -1,6 +1,6 @@
 
 import { useEffect, useRef, useState } from "react";
-import { ChatHeader } from "../components/ChatHeader";
+import { PageHeader } from "../../../components/layout/PageHeader";
 import { MessageList } from "../components/MessageList";
 import { ChatInput } from "../components/ChatInput";
 import { TypingIndicator } from "../components/TypingIndicator";
@@ -132,12 +132,14 @@ console.log("[NYRA] Acción pendiente:", response.pending_action);
     await cancelAction(actionId);
     setPendingAction(null);
   };
-
-  // 5. Renderizado
   return (
     <section className="chat-page">
       <div className="chat-page-workspace">
-        <ChatHeader />
+       <PageHeader
+        title="NYRA Chat"
+        subtitle="Modelo no conectado"
+        variant="chat"
+      />
 
         <div
           className="chat-page-messages"

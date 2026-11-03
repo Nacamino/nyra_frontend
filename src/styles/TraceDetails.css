@@ -9,9 +9,9 @@
   min-height: 0;
   padding: 24px;
 
-  border: 1px solid #34303c;
+  border: 1px solid var(--nyra-border);
   border-radius: 14px;
-  background-color: #211d29;
+  background-color: var(--nyra-card-bg);
 
   overflow-y: auto;
 }
@@ -19,7 +19,7 @@
 .trace-details--empty {
   align-items: center;
   justify-content: center;
-  color: #aaa4b3;
+  color: var(--nyra-text-muted);
   text-align: center;
 }
 
@@ -34,7 +34,7 @@
 .trace-details-header h2 {
   margin: 0 0 10px;
   font-size: 18px;
-  color: #f5f1fa;
+  color: var(--nyra-text-primary);
 }
 
 .trace-details-status {
@@ -54,21 +54,21 @@
 
 .trace-details-status--running,
 .trace-details-event-icon--started {
-  color: #c6acf2;
+  color: var(--nyra-accent);
 }
 
 .trace-details-duration {
   display: flex;
   align-items: center;
   gap: 8px;
-  color: #bfb5cb;
+  color: var(--nyra-text-muted);
   font-size: 12px;
 }
 
 .trace-details-subtitle {
   margin: 0;
   font-size: 14px;
-  color: #f5f1fa;
+  color: var(--nyra-text-primary);
 }
 
 .trace-details-events {
@@ -99,18 +99,18 @@
 }
 
 .trace-details-event-body strong {
-  color: #f5f1fa;
+  color: var(--nyra-text-primary);
   font-size: 13px;
 }
 
 .trace-details-event-body p {
   margin: 0;
-  color: #c2b8cf;
+  color: var(--nyra-text-muted);
   font-size: 12px;
   overflow-wrap: anywhere;
 }
 
 .trace-details-event-body small {
-  color: #aaa4b3;
+  color: var(--nyra-text-muted);
   font-size: 11px;
 }
